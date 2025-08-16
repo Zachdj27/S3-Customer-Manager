@@ -37,7 +37,7 @@ public class S3Service {
         ResponseInputStream<GetObjectResponse> res =  s3.getObject(getObjectRequest);
 
         try {
-            byte[] bytes = res.readAllBytes();
+            return res.readAllBytes();
         } catch (IOException e){
             throw new RuntimeException(e);
         }
