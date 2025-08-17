@@ -135,10 +135,25 @@ public class CustomerService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        //TO DO: Store image
     }
 
     public byte[] getCustomerProfileImage(Integer customerId) {
-        return new byte[0];
+        var customer = customerDao.selectCustomerById(customerId)
+                .map(customerDTOMapper)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "customer with id [%s] not found".formatted(customerId)
+                ));
+
+        //TO DO: Check if profileImageId is empty or null
+        var profileImageId = "TODO";
+
+        byte[] profileImage = s3Service.getObject(
+                s3Buckets.getCustomer(),
+                "profile-images/%s/%s".formatted(customerId, profileImageId)
+        );
+
+        return profileImage;
     }
 }
 
