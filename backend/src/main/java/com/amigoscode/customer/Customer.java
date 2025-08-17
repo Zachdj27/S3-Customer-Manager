@@ -18,7 +18,7 @@ import java.util.Objects;
                 @UniqueConstraint(
                         name = "customer_email_unique",
                         columnNames = "email"
-                )
+                ),
                 @UniqueConstraint(
                         name = "profile_image_id_unique",
                         columnNames = "profileImageId"

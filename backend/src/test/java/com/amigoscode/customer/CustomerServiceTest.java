@@ -40,7 +40,7 @@ class CustomerServiceTest {
                 customerDTOMapper,
                 passwordEncoder,
                 s3Service,
-                s3Buckets
+                s3Buckets);
     }
 
     @Test
